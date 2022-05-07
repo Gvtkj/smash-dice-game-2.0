@@ -14,7 +14,9 @@ const InputForm = () => {
     const [nextCharacterName, setNextCharacterName] = useState('')
     const [charSelectList, setCharSelectList] = useState([]);
     const [currentList, setCurrentList] = useState([]);
-    const [disabledCharacters, setDisabledCharacters] = useState([])
+    const [disabledCharacters, setDisabledCharacters] = useState([]);
+    const [removedChars, setRemovedChars] = useState([]);
+
 
 
     useEffect(() => {
@@ -25,7 +27,6 @@ const InputForm = () => {
                 // const dataArry =;
                 
                 setCharSelectList([snapshot.val()][0]);
-                
                 return charSelectList;
                
             } else{
@@ -69,10 +70,8 @@ const InputForm = () => {
     const reverseList = () =>{
         // e.preventDefault();
         setCharSelectList(charSelectList.reverse())
-        setPreviousCharacter()
-        // console.log(charSelectList)
-        // console.log(previousCharacter)
-        // return charSelectList;
+        setPreviousCharacter();
+        console.log(charSelectList);
     }
 
     const shuffleList = () => {
@@ -82,30 +81,29 @@ const InputForm = () => {
     //   console.log(charSelectList);
     }
 
-    
-
-   const tempArray = []; 
 
    const handleCharDisable = (e) => {
-   console.log(e.target.value);
-   const value = e.target.value;
+    console.log("id: " + e.target.value);
+    const value = e.target.value;
 
-   setDisabledCharacters(disabledCharacters => [...disabledCharacters, value]);
-    console.log(disabledCharacters);
-//    tempArray.push(value)
-//    console.log(tempArray);
-//    setDisabledCharacters(tempArray)
-//    return tempArray;
+    setDisabledCharacters(disabledCharacters => [...disabledCharacters, value]);
+        console.log(disabledCharacters);
+     
+;
    }
 
    const disableList = () => {
-    setCharSelectList(charSelectList.filter((char) => {
-        if(char.id == disabledCharacters) {
-            char.splice()
-        } 
-    }))
+    let res = charSelectList.filter((char) => !disabledCharacters.includes(char.id));
+    // let removedChars = charSelectList.filter((char) => disableList.includes(char.id));
+    setRemovedChars(renderDis);
+    console.log(res)
+    setCharSelectList(res);
+    // setDisabledCharacters([]);
+
+    // console.log(charSelectList);
 }
-  
+
+    const renderDis = charSelectList.filter(({id}) => disabledCharacters.includes(id));
 
     return (
         <>
@@ -124,8 +122,8 @@ const InputForm = () => {
                 <br />
                 <button type="submit" className='next-character-button'>Get Next Character</button>
                 
-               <select name="charDisableComp" id="" onChange={ handleCharDisable }>
-                   { charSelectList.map((char) => (
+               <select name="charDisableComp" className='select-input' onChange={ handleCharDisable }>
+                   { charSelectList.map((char, index) => (
                        <option value={ char.id } key={char.id}> { char.name }</option>
                    )) }
                </select>
@@ -143,17 +141,33 @@ const InputForm = () => {
                 <div className="list-1">
                     <h3> Character List </h3>
                     { charSelectList.map((char, index) => (
-                            <p value={ index } key={char.id}> { char.name  }  { index } </p>
+                            <p value={ char.id } key={char.id}> { char.name  }  { index } </p>
                         )) }
                 </div>
                 
                 <div className="list-2">
                     <h3> Characters To Be Removed </h3>
                     {
-                    disabledCharacters.map((char) =>(
-                        <p> { charSelectList[char].name} </p>
-                    ))
+                    // disabledCharacters.map((char) =>(
+                    //     <p key={charSelectList[char].id}> { charSelectList[char].name + "  " + charSelectList[char].id}  </p>
+                    // ))
+
+                        renderDis.map((char) =>(
+                            <p value={ char.id }> { char.name } </p>
+                        ))              
                     }
+                </div>
+
+                <div className="list-3">
+                    <h3> Disabled Characters </h3>
+                    {
+                        removedChars.map((char) => (
+                            <p value={char.id }> { char.name}</p>
+                            ))
+                    }
+
+
+
                 </div>
                
             
