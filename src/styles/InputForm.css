@@ -1,8 +1,20 @@
 form{
-    background: teal;
+    background: lightcoral;
     padding: 30px 40px;
     max-width: 500px;
+    border-radius: 10%;
+    margin: 20px auto 0 auto;
+    border: 1px solid black;
+    
+}
+
+.wrapper{
+    background-color: #f8f8f8;
+    max-width: 1000PX;
     margin: 0 auto;
+    border: 1px solid black;
+    margin-top: -11px;
+    /* border-top: none; */
 }
 
 .inputLabel{
@@ -28,34 +40,63 @@ form{
 
 .next-character-button{
     padding: 10px 20px;
-    background-color: aqua;
+    background-color: #e9e646;
     border: none;
     cursor: pointer;
     font-weight: bold;
     margin-left: auto;
 }
 
+.next-character-button:hover{
+    cursor: pointer;
+    background-color: #0ABAB5;
+    font-weight: bold;
+    /* color: white; */
+    transition: .3s;
+}
+
 .btn-wrapper{
     display: flex;
     justify-content: center;
     /* background: #01caee; */
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 }
 
 .list-wrapper{
     display: flex;
-    justify-content: space-around;
-    max-width: 500px;
+    justify-content: space-evenly;
+    max-width: 1000px;
+    background: #f8f8f8;
     margin: 0 auto;
     text-align: center;
+    /* border: 1px solid black; */
+    border-top: 1px solid black;
+   
+}
+
+.list{
+    text-align: start;
+}
+
+.list > h3{
+    text-decoration: underline;
+    letter-spacing: 1.3px;
 }
 
 .btn-function{
     padding: 10px 16px;
-    background-color: aqua;
+    background-color: #e9e646;
     border: none;
     cursor: pointer;
     font-weight: bold;
     border-radius: 20px;
     margin: 45px 30px;
+}
+
+.btn-function:hover{
+    cursor: pointer;
+    background-color: #0ABAB5;
+    font-weight: bold;
+    /* color: white; */
+    transition: .3s;
 }

@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-bottom: .5px solid black;
+    margin-bottom: 10px;
+}
+
+img{
+    height: 80px;
+    padding: 10px 0;
+}
+.header-image{
+    
+    object-fit: contain;
+}

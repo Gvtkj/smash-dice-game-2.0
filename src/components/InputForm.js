@@ -62,13 +62,14 @@ const InputForm = () => {
 
     const handleChange = (e) =>{
         setPreviousCharacter(Number(e.target.value));
-        console.log(previousCharacter)
+        // console.log(previousCharacter)
     }
 
 
 
     const reverseList = () =>{
-        // e.preventDefault();
+        // let tempList1 = charSelectList.reverse();
+        // console.log(tempList1);
         setCharSelectList(charSelectList.reverse())
         setPreviousCharacter();
         console.log(charSelectList);
@@ -106,9 +107,9 @@ const InputForm = () => {
     const renderDis = charSelectList.filter(({id}) => disabledCharacters.includes(id));
 
     return (
-        <>
+        <div className='wrapper'>
             <form  onSubmit={ handleSubmit }className="inputForm">
-                <label className="inputLabel">Last Character: </label>
+                <label className="inputLabel">Previous Character: </label>
                 <select name="charSelect" className='select-input' onChange={handleChange}  >
                    {  charSelectList.map((char, index) => (
                     <option value={index}  key={char.id}>{ char.name }</option>
@@ -121,7 +122,8 @@ const InputForm = () => {
                 <p>{roll}</p>
                 <br />
                 <button type="submit" className='next-character-button'>Get Next Character</button>
-                
+                <br /> <br />
+                <label className='inputLabel'> Disable Characters: </label>
                <select name="charDisableComp" className='select-input' onChange={ handleCharDisable }>
                    { charSelectList.map((char, index) => (
                        <option value={ char.id } key={char.id}> { char.name }</option>
@@ -138,39 +140,35 @@ const InputForm = () => {
             </div>
             
             <div className="list-wrapper">
-                <div className="list-1">
-                    <h3> Character List </h3>
+                <div className="list">
+                    <h3> Character List: </h3>
                     { charSelectList.map((char, index) => (
-                            <p value={ char.id } key={char.id}> { char.name  }  { index } </p>
+                            <p value={ char.id } key={char.id}> { char.name  }:  { index +1 } </p>
                         )) }
                 </div>
                 
-                <div className="list-2">
-                    <h3> Characters To Be Removed </h3>
+                <div className="list">
+                    <h3> Characters To Be Disabled: </h3>
                     {
                     // disabledCharacters.map((char) =>(
                     //     <p key={charSelectList[char].id}> { charSelectList[char].name + "  " + charSelectList[char].id}  </p>
                     // ))
 
                         renderDis.map((char) =>(
-                            <p value={ char.id }> { char.name } </p>
+                            <p value={ char.id } key={char.id}> { char.name } </p>
                         ))              
                     }
                 </div>
 
-                <div className="list-3">
-                    <h3> Disabled Characters </h3>
+                <div className="list">
+                    <h3> Disabled Characters: </h3>
                     {
                         removedChars.map((char) => (
                             <p value={char.id }> { char.name}</p>
                             ))
                     }
 
-
-
                 </div>
-               
-            
             </div>
            
             
@@ -178,7 +176,7 @@ const InputForm = () => {
            
               
             
-        </> 
+        </div> 
         
      );
 }
