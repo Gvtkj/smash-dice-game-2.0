@@ -100,3 +100,23 @@ form{
     /* color: white; */
     transition: .3s;
 }
+@media(max-width: 500px){
+    .btn-function{
+        margin: 40px auto;
+    }
+    .btn-wrapper{
+        display: flex;
+        justify-content: space-around;
+        /* background-color: #0ABAB5; */
+    }
+
+    .list-wrapper{
+        flex-direction: column-reverse;
+        
+    }
+
+    .list{
+        text-align: center;
+    }
+    
+}

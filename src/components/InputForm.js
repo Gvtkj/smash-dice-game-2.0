@@ -140,14 +140,14 @@ const InputForm = () => {
             </div>
             
             <div className="list-wrapper">
-                <div className="list">
+                <div className="list char-list-1">
                     <h3> Character List: </h3>
                     { charSelectList.map((char, index) => (
                             <p value={ char.id } key={char.id}> { char.name  }:  { index +1 } </p>
                         )) }
                 </div>
                 
-                <div className="list">
+                <div className="list char-list-2">
                     <h3> Characters To Be Disabled: </h3>
                     {
                     // disabledCharacters.map((char) =>(
@@ -160,11 +160,11 @@ const InputForm = () => {
                     }
                 </div>
 
-                <div className="list">
+                <div className="list char-list-3">
                     <h3> Disabled Characters: </h3>
                     {
                         removedChars.map((char) => (
-                            <p value={char.id }> { char.name}</p>
+                            <p value={char.id } key={char.id}> { char.name}</p>
                             ))
                     }
 
